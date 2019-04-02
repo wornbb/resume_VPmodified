@@ -1,0 +1,58 @@
+PDN_grid_intv=2
+Metal Layer 0: p3.000000e-05	w1.000000e-05	t3.500000e-06
+R:0.029265	L:4.504143e-11
+Metal Layer 1: p3.000000e-05	w1.000000e-05	t3.500000e-06
+R:0.029265	L:4.504118e-11
+Metal Layer 2: p8.100000e-07	w4.000000e-07	t7.200000e-07
+R:0.095817	L:4.759316e-13
+Metal Layer 3: p8.100000e-07	w4.000000e-07	t7.200000e-07
+R:0.095817	L:4.759289e-13
+PDN_padpitch=2.850000e-04
+PDN_padD=1.000000e-04
+PDN_padR=1.000000e-02
+PDN_cur_dense=8.500000e+07
+PDN_padconfig=1
+padloc_format=0
+PDN_decap_dense=1.000000e+02
+PDN_decap_ratio=1.000000e-01
+PDN_decap_unifm=0
+PDN_padL=7.200000e-11
+PDN_pkg_sL=3.000000e-12
+PDN_pkg_sR=1.500000e-05
+PDN_pkg_C=2.640000e-05
+PDN_pkg_pR=5.415000e-04
+PDN_pkg_pL=4.610000e-12
+PDN_pkg_scale=1.000000e+00
+vdd=8.000000e-01
+gnd=0.000000e+00
+proc_clock_freq=3.700000e+09
+PDN_step_percycle=5
+ptrace_sampling_intvl=1
+PDN_ptrace_warmup=0
+PDN_multi_dom=0
+v_stacking=0
+TSV_config=1
+TSV_R=0.046850
+TSV_L=0.000000
+SC_freq=50000000.000000
+SC_totcap=0.000000
+SC_Rontop=1.052000
+SC_Ronbtm=1.170000
+run_PDN=0
+PDN_pkgLC=1
+PDN_gridL=1
+PDN_sin_pattern=0
+PDN_sin_totstep=10000
+PDN_sin_freq=1.000000e+08
+mlayer_spec_file=(null)
+layer_file_3D=(null)
+padloc_file_out=(null)
+vio_file=(null)
+node_viotrace_file=(null)
+trans_vgradient_file=(null)
+senloc_file=(null)
+padcur_file=(null)
+tsvcur_file=(null)
+gridvol_file=(null)
+END_OF_CONFIGS
+pkgDrop	max_onchip_drop	

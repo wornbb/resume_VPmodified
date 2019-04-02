@@ -1,0 +1,13 @@
+# Line Format: <unit-name>\t<width>\t<height>\t<left-x>\t<bottom-y>
+# all dimensions are in meters
+# comment lines begin with a '#'
+# comments and empty lines are ignored
+
+core0	0.0107638	0.000586879	0	0.0101769
+core0_IFU	0.00245284	0.00228849	0.00292907	0.00788844
+core0_LSU	0.00292907	0.00116224	8.88178e-19	0.0090147
+core0_RNU	0.000816866	0.000347291	0.0021122	0.00788844
+core0_EXU	0.00078864	0.00112626	1.44329e-18	0.00788844
+L20	0.00132356	0.00031629	0.00078864	0.00788844
+core0_MMU	7.11392e-05	0.000545465	6.10623e-19	0.00734298
+

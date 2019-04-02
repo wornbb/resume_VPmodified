@@ -1,0 +1,973 @@
+./matrix.c:  int nr = model->rows;
+./matrix.c:  int nc = model->cols;
+./matrix.c:  int nl = model->n_layers;
+./matrix.c:  double Rp = model->c4->pad_r;
+./matrix.c:  int is_3D = model->is_3D;
+./matrix.c:  int mtdmn  = model->config.PDN_multi_dom;
+./matrix.c:          num_tsv += model->layers[l].tsv.num_vdd;
+./matrix.c:          num_tsv += model->layers[l].tsv.num_gnd;
+./matrix.c:  padloc = model->c4->vdd_loc[0];
+./matrix.c:      for(i=0; i<model->layers[l].metal_layers.n_metal; i++){
+./matrix.c:          direc = model->layers[l].metal_layers.geo[i].direc;
+./matrix.c:            Rx += 1/model->layers[l].metal_layers.gridRL[i].r;
+./matrix.c:            Ry += 1/model->layers[l].metal_layers.gridRL[i].r;
+./matrix.c:      Rv = model->layers[l].tsv.r; //assume uniform TSV R
+./matrix.c:                if((l<nl-1) && (VDDTSV == model->layers[l].tsv.loc[i][j])){
+./matrix.c:                if((l>0) && (VDDTSV == model->layers[l-1].tsv.loc[i][j])){
+./matrix.c:  padloc = model->c4->gnd_loc[0];
+./matrix.c:      for(i=0; i<model->layers[l].metal_layers.n_metal; i++){
+./matrix.c:          direc = model->layers[l].metal_layers.geo[i].direc;
+./matrix.c:            Rx += 1/model->layers[l].metal_layers.gridRL[i].r;
+./matrix.c:            Ry += 1/model->layers[l].metal_layers.gridRL[i].r;
+./matrix.c:      Rv = model->layers[l].tsv.r; //assume uniform TSV R
+./matrix.c:                if((l<nl-1) && (GNDTSV == model->layers[l].tsv.loc[i][j])){
+./matrix.c:                if((l>0) && (GNDTSV == model->layers[l-1].tsv.loc[i][j])){
+./matrix.c:  int nr = model->rows;
+./matrix.c:  int nc = model->cols;
+./matrix.c:  int nl = model->n_layers;
+./matrix.c:  double Rp = model->c4->pad_r;
+./matrix.c:  double vdd = model->config.vdd;
+./matrix.c:  double gnd = model->config.gnd;
+./matrix.c:  pkg_vdd = model->last_steady[2*nl*nr*nc + PKG_VDD];
+./matrix.c:  pkg_gnd = model->last_steady[2*nl*nr*nc + PKG_GND];
+./matrix.c:          loc = model->c4->vdd_loc;
+./matrix.c:          loc = model->c4->gnd_loc;
+./matrix.c:  int nr = model->rows;
+./matrix.c:  int nc = model->cols;
+./matrix.c:  int nl = model->n_layers;
+./matrix.c:  int *padloc_v = model->c4->vdd_loc[0];
+./matrix.c:  int *padloc_g = model->c4->gnd_loc[0];
+./matrix.c:  int *ivrloc = model->sc_converter->loc[0];
+./matrix.c:  int num_ivr = model->sc_converter->num_IVR;
+./matrix.c:  double vdd = model->config.vdd - model->config.gnd;
+./matrix.c:    num_tsv += model->layers[l].tsv.num_gnd;
+./matrix.c:      for(i=0; i<model->layers[cur_layer].metal_layers.n_metal; i++){
+./matrix.c:          direc = model->layers[cur_layer].metal_layers.geo[i].direc;
+./matrix.c:            Rx += 1/model->layers[cur_layer].metal_layers.gridRL[i].r;
+./matrix.c:            Ry += 1/model->layers[cur_layer].metal_layers.gridRL[i].r;
+./matrix.c:      Rv = model->layers[cur_layer].tsv.r; //assume uniform TSV R
+./matrix.c:      Rp = model->c4->pad_r;
+./matrix.c:      Rivr = model->sc_converter->R_drop;
+./matrix.c:          Rp += model->layers[k].tsv.r;
+./matrix.c:                if((cur_layer<nl-1) && (GNDTSV == model->layers[cur_layer].tsv.loc[i][j])){
+./matrix.c:                if((cur_layer>0) && (GNDTSV == model->layers[cur_layer-1].tsv.loc[i][j])){
+./matrix.c:  int nr = model->rows;
+./matrix.c:  int nc = model->cols;
+./matrix.c:  int nl = model->n_layers;
+./matrix.c:  int **padloc_v = model->c4->vdd_loc;
+./matrix.c:  int **padloc_g = model->c4->gnd_loc;
+./matrix.c:  int **ivrloc = model->sc_converter->loc;
+./matrix.c:  double vdd = model->config.vdd;
+./matrix.c:  double gnd = model->config.gnd;
+./matrix.c:  double *v = model->last_steady;
+./matrix.c:      Rp = model->c4->pad_r;
+./matrix.c:      Rivr = model->sc_converter->R_drop;
+./matrix.c:          Rp += model->layers[k].tsv.r;
+./matrix.c:  int nr = model->rows;
+./matrix.c:  int nc = model->cols;
+./matrix.c:  int nl = model->n_layers;
+./matrix.c:  int nvp = model->c4->vdd_num;
+./matrix.c:  int ngp = model->c4->gnd_num;
+./matrix.c:  int nml = model->layers[0].metal_layers.n_metal/2;
+./matrix.c:  int mtdmn  = model->config.PDN_multi_dom;
+./matrix.c:  double Rp  = model->c4->pad_r;
+./matrix.c:  double Lp  = model->c4->pad_l;
+./matrix.c:  double Rsp = model->config.PDN_pkg_sR;
+./matrix.c:  double Lsp = model->config.PDN_pkg_sL;
+./matrix.c:  double Rpp = model->config.PDN_pkg_pR;
+./matrix.c:  double Lpp = model->config.PDN_pkg_pL;
+./matrix.c:  double Cpp = model->config.PDN_pkg_C;
+./matrix.c:  double delta_t = 1/(model->config.proc_clock_freq*model->config.PDN_step_percycle);
+./matrix.c:  metal_gridRL_t *g = model->layers[0].metal_layers.gridRL;
+./matrix.c:  copy_dvector(model->last_power, p->cuboid[0][0], nr*nc*nl);
+./matrix.c:  m = n = model->trans_matrix_dim;
+./matrix.c:  if(model->config.PDN_pkgLC){
+./matrix.c:  if(model->config.PDN_pkgLC){
+./matrix.c:  if(model->config.PDN_pkgLC){
+./matrix.c:  if(model->config.PDN_pkgLC)
+./matrix.c:  if(model->config.PDN_pkgLC)
+./matrix.c:  if(model->config.PDN_pkgLC)
+./matrix.c:  int nr = model->rows;
+./matrix.c:  int nc = model->cols;
+./matrix.c:  int nl = model->n_layers;
+./matrix.c:  int nvp = model->c4->vdd_num;
+./matrix.c:  int ngp = model->c4->gnd_num;
+./matrix.c:  int mtdmn  = model->config.PDN_multi_dom;
+./matrix.c:  double Rp  = model->c4->pad_r;
+./matrix.c:  double Lp  = model->c4->pad_l;
+./matrix.c:  double Rsp = model->config.PDN_pkg_sR;
+./matrix.c:  double Lsp = model->config.PDN_pkg_sL;
+./matrix.c:  double Rpp = model->config.PDN_pkg_pR;
+./matrix.c:  double Lpp = model->config.PDN_pkg_pL;
+./matrix.c:  double Cpp = model->config.PDN_pkg_C;
+./matrix.c:  double delta_t = 1/(model->config.proc_clock_freq*model->config.PDN_step_percycle);
+./matrix.c:  for(i=0; i<model->layers[0].metal_layers.n_metal; i++){
+./matrix.c:      direc = model->layers[0].metal_layers.geo[i].direc;
+./matrix.c:        Rx += 1/model->layers[0].metal_layers.gridRL[i].r;
+./matrix.c:        Ry += 1/model->layers[0].metal_layers.gridRL[i].r;
+./matrix.c:  copy_dvector(model->last_power, p->cuboid[0][0], nr*nc*nl);
+./matrix.c:  m = n = model->trans_matrix_dim;
+./matrix.c:  if(model->config.PDN_pkgLC){
+./matrix.c:  if(model->config.PDN_pkgLC){
+./matrix.c:  if(model->config.PDN_pkgLC){
+./matrix.c:  if(model->config.PDN_pkgLC)
+./matrix.c:  if(model->config.PDN_pkgLC)
+./matrix.c:  if(model->config.PDN_pkgLC)
+./matrix.c:  int nr = model->rows;
+./matrix.c:  int nc = model->cols;
+./matrix.c:  int nl = model->n_layers;
+./matrix.c:  int nvp = model->c4->vdd_num;
+./matrix.c:  int ngp = model->c4->gnd_num;
+./matrix.c:  int nvtsv = model->layers[0].tsv.num_vdd;
+./matrix.c:  int ngtsv = model->layers[0].tsv.num_gnd;
+./matrix.c:  int vs = model->config.v_stacking;
+./matrix.c:  double Rpv  = model->c4->pad_r;
+./matrix.c:  double Lpv  = model->c4->pad_l;
+./matrix.c:  double Rpg  = model->c4->pad_r;
+./matrix.c:  double Lpg  = model->c4->pad_l;
+./matrix.c:  double Rsp = model->config.PDN_pkg_sR;
+./matrix.c:  double Lsp = model->config.PDN_pkg_sL;
+./matrix.c:  double Rpp = model->config.PDN_pkg_pR;
+./matrix.c:  double Lpp = model->config.PDN_pkg_pL;
+./matrix.c:  double Cpp = model->config.PDN_pkg_C;
+./matrix.c:  double delta_t = 1/(model->config.proc_clock_freq*model->config.PDN_step_percycle);
+./matrix.c:  double vdd = model->config.vdd;
+./matrix.c:  //        Rtsv_sum += model->layers[l].tsv.r;
+./matrix.c:  //        Ltsv_sum += model->layers[l].tsv.l;
+./matrix.c:      nIVR = model->sc_converter->num_IVR;
+./matrix.c:      Ront = model->sc_converter->Ron_top;
+./matrix.c:      Ronb = model->sc_converter->Ron_bottom;
+./matrix.c:      Civr = model->sc_converter->c;
+./matrix.c:      ivr_loc = model->sc_converter->loc;
+./matrix.c:  m = n = model->trans_matrix_dim;
+./matrix.c:  if(model->config.PDN_pkgLC){
+./matrix.c:      for(i=0; i<model->layers[l].metal_layers.n_metal; i++){
+./matrix.c:          direc = model->layers[l].metal_layers.geo[i].direc;
+./matrix.c:            Rx += 1/model->layers[l].metal_layers.gridRL[i].r;
+./matrix.c:            Ry += 1/model->layers[l].metal_layers.gridRL[i].r;
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == GNDTSV){
+./matrix.c:          Ltsv = model->layers[l].tsv.l;
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == GNDTSV){
+./matrix.c:          Rtsv = model->layers[l].tsv.r;
+./matrix.c:          Ltsv = model->layers[l].tsv.l;
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == GNDTSV){
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == VDDTSV){
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == GNDTSV){
+./matrix.c:          Ltsv = model->layers[l].tsv.l;
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == VDDTSV){
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == GNDTSV){
+./matrix.c:          Rtsv = model->layers[l].tsv.r;
+./matrix.c:          Ltsv = model->layers[l].tsv.l;
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == VDDTSV){
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == GNDTSV){
+./matrix.c:  if(model->config.PDN_pkgLC){
+./matrix.c:        if(model->config.PDN_pkgLC)
+./matrix.c:        if(model->config.PDN_pkgLC)
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == GNDTSV){
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == GNDTSV){
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == GNDTSV){
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == VDDTSV){
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == GNDTSV){
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == VDDTSV){
+./matrix.c:                if(model->layers[l].tsv.loc[i][j] == GNDTSV){
+./matrix.c:  if(model->config.PDN_pkgLC){
+./matrix.c:  int nr = model->rows;
+./matrix.c:  int nc = model->cols;
+./matrix.c:  int nl = model->n_layers;
+./matrix.c:  int nvp = model->c4->vdd_num;
+./matrix.c:  int ngp = model->c4->gnd_num;
+./matrix.c:  int nvtsv = model->layers[0].tsv.num_vdd;
+./matrix.c:  int ngtsv = model->layers[0].tsv.num_gnd;
+./matrix.c:  int nml = model->layers[0].metal_layers.n_metal/2;
+./matrix.c:  int vs = model->config.v_stacking;
+./matrix.c:  double vdd = model->config.vdd;
+./matrix.c:  double gnd = model->config.gnd;
+./matrix.c:  if(!model->is_3D){
+./matrix.c:      if(model->config.PDN_gridL){
+./matrix.c:      if(model->config.PDN_gridL){
+./matrix.c:      if(model->config.PDN_pkgLC){
+./matrix.c:          nIVR = model->sc_converter->num_IVR;
+./matrix.c:      if(model->config.PDN_pkgLC){
+./matrix.c:  int nr = model->rows;
+./matrix.c:  int nc = model->cols;
+./matrix.c:  int nl = model->n_layers;
+./matrix.c:  int nvp = model->c4->vdd_num;
+./matrix.c:  int ngp = model->c4->gnd_num;
+./matrix.c:  int nvtsv = model->layers[0].tsv.num_vdd;
+./matrix.c:  int ngtsv = model->layers[0].tsv.num_gnd;
+./matrix.c:  int nml = model->layers[0].metal_layers.n_metal/2;
+./matrix.c:  int vs = model->config.v_stacking;
+./matrix.c:  double Lpv = model->c4->pad_l;
+./matrix.c:  double Lpg = model->c4->pad_l;
+./matrix.c:  double Lsp = model->config.PDN_pkg_sL;
+./matrix.c:  double Lpp = model->config.PDN_pkg_pL;
+./matrix.c:  double vdd = model->config.vdd;
+./matrix.c:  double gnd = model->config.gnd;
+./matrix.c:  double delta_t = 1/(model->config.proc_clock_freq*model->config.PDN_step_percycle);
+./matrix.c:  //if(model->is_3D && vs){
+./matrix.c:  //        Ltsv_sum += model->layers[l].tsv.l;
+./matrix.c:  if(!model->is_3D){
+./matrix.c:          model->last_trans[cur] += delta_t * vdd / Lpv;
+./matrix.c:          model->last_trans[cur] -= (delta_t/2) * 
+./matrix.c:            (power->cuboid[0][0][i] + model->last_power[i]) / (Cg * (vdd-gnd));
+./matrix.c:      if(model->config.PDN_gridL){
+./matrix.c:              model->last_trans[cur] += 0;
+./matrix.c:          model->last_trans[cur] -= delta_t * gnd / Lpg;
+./matrix.c:          model->last_trans[cur] += (delta_t/2) * 
+./matrix.c:            (power->cuboid[0][0][i] + model->last_power[i]) / (Cg * (vdd-gnd));
+./matrix.c:      if(model->config.PDN_gridL){
+./matrix.c:              model->last_trans[cur] += 0;
+./matrix.c:      if(model->config.PDN_pkgLC){
+./matrix.c:          model->last_trans[cur] += 0;
+./matrix.c:          model->last_trans[cur] += delta_t * (vdd*iM*iA - gnd*iM*iB);
+./matrix.c:          nIVR = model->sc_converter->num_IVR;
+./matrix.c:          Civr = model->sc_converter->c;
+./matrix.c:          ivr_loc = model->sc_converter->loc;
+./matrix.c:            model->last_trans[cur] += delta_t * nl*vdd / Lpv;
+./matrix.c:            model->last_trans[cur] += delta_t * vdd / Lpv;
+./matrix.c:          model->last_trans[cur] -= delta_t * gnd / Lpg;
+./matrix.c:              model->last_trans[cur] += 0;
+./matrix.c:              model->last_trans[cur] += 0;
+./matrix.c:          model->last_trans[cur] += 0;
+./matrix.c:          model->last_trans[cur] += 0;
+./matrix.c:      if(model->config.PDN_pkgLC){
+./matrix.c:          model->last_trans[cur] += 0;
+./matrix.c:            model->last_trans[cur] += delta_t * (nl*vdd*iM*iA - gnd*iM*iB);
+./matrix.c:            model->last_trans[cur] += delta_t * (vdd*iM*iA - gnd*iM*iB);
+./pad.c:  int nr = model->rows;
+./pad.c:  int nc = model->cols;
+./pad.c:  int rpg = model->c4->pad_grid_row;
+./pad.c:  int cpg = model->c4->pad_grid_col;
+./pad.c:      if((0 == model->config.padloc_format) || 
+./pad.c:         (1 == model->config.padloc_format)){
+./pad.c:              if ((grid_x >= model->cols) || (grid_y >= model->rows) ||
+./pad.c:                  printf("grid_size = %d*%d\n", model->cols, model->rows);
+./pad.c:                  if (PGPAD & model->c4->vdd_loc[nr - grid_y - 1][grid_x])
+./pad.c:                  model->c4->vdd_loc[nr - grid_y - 1][grid_x] |= PGPAD;
+./pad.c:                  if (PGPAD & model->c4->gnd_loc[nr - grid_y - 1][grid_x])
+./pad.c:                  model->c4->gnd_loc[nr - grid_y - 1][grid_x] |= PGPAD;
+./pad.c:                  if (PGPAD & model->c4->vdd_loc[grid_y][grid_x])
+./pad.c:                  model->c4->vdd_loc[grid_y][grid_x] |= PGPAD;
+./pad.c:                  if (PGPAD & model->c4->gnd_loc[grid_y][grid_x])
+./pad.c:                  model->c4->gnd_loc[grid_y][grid_x] |= PGPAD;
+./pad.c:  ptr = model->layers[0].b2gmap[r][c];
+./pad.c:  name = model->layers[0].flp->units[ptr->idx].name;
+./pad.c:  int rpg = model->c4->pad_grid_row;
+./pad.c:  int cpg = model->c4->pad_grid_col;
+./pad.c:  int nr = model->rows;
+./pad.c:  int nc = model->cols;
+./pad.c:  PDN_flp_t *flp = model->layers[0].flp;
+./pad.c:  double w = model->width;
+./pad.c:  double h = model->height;
+./pad.c:  int **vp = model->c4->vdd_loc;
+./pad.c:  int **gp = model->c4->gnd_loc;
+./pad.c:  int rpg = model->c4->pad_grid_row;
+./pad.c:  int cpg = model->c4->pad_grid_col;
+./pad.c:  int nr = model->rows;
+./pad.c:  int nc = model->cols;
+./pad.c:              padleft_v = model->config.MC_pads / (2 * 0.5);
+./pad.c:              padleft_g = model->config.MC_pads / (2 * 0.5);
+./pad.c:              padleft_v = model->config.MC_pads / (2 * model->config.IO_dense);
+./pad.c:              padleft_g = model->config.MC_pads / (2 * model->config.IO_dense);
+./pad.c:  nr = model->rows;
+./pad.c:  nc = model->cols;
+./pad.c:  rpg = model->c4->pad_grid_row;
+./pad.c:  cpg = model->c4->pad_grid_col;
+./pad.c:            model->c4->vdd_loc[r_cordt][c_cordt] |= pad_type;
+./pad.c:            model->c4->gnd_loc[r_cordt][c_cordt] |= pad_type;
+./pad.c:  int nr = model->rows;
+./pad.c:  int nc = model->cols;
+./pad.c:  int **vloc = model->c4->vdd_loc;
+./pad.c:  int **gloc = model->c4->gnd_loc;
+./pad.c:      loc = model->c4->vdd_loc;
+./pad.c:      loc = model->c4->gnd_loc;
+./pad.c:  nr = model->rows;
+./pad.c:  nc = model->cols;
+./pad.c:  rpg = model->c4->pad_grid_row;
+./pad.c:  cpg = model->c4->pad_grid_col;
+./pad.c:  int nr = model->rows;
+./pad.c:  int nc = model->cols;
+./pad.c:  int **vloc = model->c4->vdd_loc;
+./pad.c:  int **gloc = model->c4->gnd_loc;
+./pad.c:  int rpg = model->c4->pad_grid_row;
+./pad.c:  int cpg = model->c4->pad_grid_col;
+./pad.c:  if((0 == model->config.padloc_format) || 
+./pad.c:     (2 == model->config.padloc_format)){
+./pad.c:  int nr = model->rows;
+./pad.c:  int nc = model->cols;
+./pad.c:  int rpg = model->c4->pad_grid_row;
+./pad.c:  int cpg = model->c4->pad_grid_col;
+./pad.c:  int **vloc = model->c4->vdd_loc;
+./pad.c:  int **gloc = model->c4->gnd_loc;
+./pad.c:  double padD = model->config.PDN_padD/2;
+./pad.c:  if((0 == model->config.padloc_format) || 
+./pad.c:     (2 == model->config.padloc_format)){
+./PDN_analyze.c:  int m = model->trans_matrix_dim;
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nl = model->n_layers;
+./PDN_analyze.c:      ntsv += model->layers[l].tsv.num_gnd;
+./PDN_analyze.c:      ntsv += model->layers[l].tsv.num_vdd;
+./PDN_analyze.c:  status->blkstats.counter_1D   = ivector(model->total_n_blocks);
+./PDN_analyze.c:  status->blkstats.max_1D       = dvector(model->total_n_blocks);
+./PDN_analyze.c:  zero_ivector(status->blkstats.counter_1D, model->total_n_blocks);
+./PDN_analyze.c:  negL_dvector(status->blkstats.max_1D, model->total_n_blocks);
+./PDN_analyze.c:  if(model->config.vgradient_analyse){
+./PDN_analyze.c:  //if(model->config.vgradient_analyse){
+./PDN_analyze.c:  if(model->config.vgradient_analyse)
+./PDN_analyze.c:  if (strcmp(model->config.senloc_file, NULLFILE)){
+./PDN_analyze.c:      parse_sensor_loc(model, status, model->config.senloc_file);
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:          if ((grid_x >= model->cols) || (grid_y >= model->rows) ||
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nl = model->n_layers;
+./PDN_analyze.c:  if(model->is_3D)
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nl = model->n_layers;
+./PDN_analyze.c:         p_count, model->width, model->height);p_count++;
+./PDN_analyze.c:         p_count, model->config.vdd);p_count++;
+./PDN_analyze.c:         p_count, model->c4->pad_grid_col, model->c4->pad_grid_row);p_count++;
+./PDN_analyze.c:         p_count, model->c4->vdd_num, model->c4->gnd_num);p_count++;
+./PDN_analyze.c:  if(model->is_3D){
+./PDN_analyze.c:        printf("%d/", model->layers[l].tsv.num_gnd + model->layers[l].tsv.num_vdd);
+./PDN_analyze.c:  int m = model->trans_matrix_dim;
+./PDN_analyze.c:  double l_pkg_p = model->config.PDN_pkg_pL;
+./PDN_analyze.c:  double r_pkg_p = model->config.PDN_pkg_pR;
+./PDN_analyze.c:  double delta_t = 1/model->config.proc_clock_freq;
+./PDN_analyze.c:  double vdd = model->config.vdd;
+./PDN_analyze.c:  double gnd = model->config.gnd;
+./PDN_analyze.c:    status->cycle_avg[i] += model->last_trans[i];
+./PDN_analyze.c:  if(!(status->trans_counter % model->config.PDN_step_percycle)){
+./PDN_analyze.c:          status->cycle_avg[i] /= model->config.PDN_step_percycle;
+./PDN_analyze.c:      if(model->config.PDN_pkgLC){
+./PDN_analyze.c:      if(!model->is_3D)
+./PDN_analyze.c:  if((model->config.animation) &&
+./PDN_analyze.c:     !(status->trans_counter % model->config.frame_intv)){
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nl = model->n_layers;
+./PDN_analyze.c:  if(model->config.PDN_pkgLC){
+./PDN_analyze.c:  if(model->is_3D){
+./PDN_analyze.c:  if(strcmp(model->config.senloc_file, NULLFILE)){
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nl = model->n_layers;
+./PDN_analyze.c:  if(model->config.PDN_pkgLC){
+./PDN_analyze.c:  if(model->is_3D){
+./PDN_analyze.c:  if (strcmp(model->config.senloc_file, NULLFILE)){
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nvp = model->c4->vdd_num;
+./PDN_analyze.c:  int ngp = model->c4->gnd_num;
+./PDN_analyze.c:  int nml = model->layers[0].metal_layers.n_metal/2;
+./PDN_analyze.c:  double vdd = model->config.vdd;
+./PDN_analyze.c:  double gnd = model->config.gnd;
+./PDN_analyze.c:  if(model->config.PDN_gridL)
+./PDN_analyze.c:    vdroop = model->last_trans[nvp+cur_idx] - model->last_trans[nvp+nr*nc+nbr*nml+ngp+cur_idx];
+./PDN_analyze.c:    vdroop = model->last_trans[nvp+cur_idx] - model->last_trans[nvp+nr*nc+ngp+cur_idx];
+./PDN_analyze.c:  fprintf(fp, "%lf\t%lf\n", model->last_trans[nvp+cur_idx], vnoise);
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nvp = model->c4->vdd_num;
+./PDN_analyze.c:  int ngp = model->c4->gnd_num;
+./PDN_analyze.c:  int nml = model->layers[0].metal_layers.n_metal/2;
+./PDN_analyze.c:  double vdd = model->config.vdd;
+./PDN_analyze.c:  double gnd = model->config.gnd;
+./PDN_analyze.c:  if(model->config.PDN_gridL)
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nl = model->n_layers;
+./PDN_analyze.c:  int vs = model->config.v_stacking;
+./PDN_analyze.c:  int **vloc = model->c4->vdd_loc;
+./PDN_analyze.c:  int **gloc = model->c4->gnd_loc;
+./PDN_analyze.c:  double *v = model->last_steady;
+./PDN_analyze.c:  double r_pad = model->c4->pad_r;
+./PDN_analyze.c:  double vdd = model->config.vdd;
+./PDN_analyze.c:  double gnd = model->config.gnd;
+./PDN_analyze.c:  double pkg_vdd = model->last_steady[2*nl*nr*nc+PKG_VDD];
+./PDN_analyze.c:  double pkg_gnd = model->last_steady[2*nl*nr*nc+PKG_GND];
+./PDN_analyze.c:  double padD = model->config.PDN_padD/2;
+./PDN_analyze.c:        r_tsv_pad += model->layers[k].tsv.r;
+./PDN_analyze.c:  status->curIth_vdd = above_threshold_dmatrix(vcur, nr, nc, model->c4->Ith);
+./PDN_analyze.c:  status->curIth_gnd = above_threshold_dmatrix(gcur, nr, nc, model->c4->Ith);
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nl = model->n_layers;
+./PDN_analyze.c:  int vs = model->config.v_stacking;
+./PDN_analyze.c:  double *v = model->last_steady;
+./PDN_analyze.c:      Rv = model->layers[l].tsv.r;
+./PDN_analyze.c:                if((VDDTSV == model->layers[l].tsv.loc[i][j])){
+./PDN_analyze.c:                else if((GNDTSV == model->layers[l].tsv.loc[i][j])){
+./PDN_analyze.c:                if((GNDTSV == model->layers[l].tsv.loc[i][j])){
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nl = model->n_layers;
+./PDN_analyze.c:  int vs = model->config.v_stacking;
+./PDN_analyze.c:  int **vloc = model->c4->vdd_loc;
+./PDN_analyze.c:  int **gloc = model->c4->gnd_loc;
+./PDN_analyze.c:  double *v = model->last_steady;
+./PDN_analyze.c:  double r_pad = model->c4->pad_r;
+./PDN_analyze.c:  double vdd = model->config.vdd;
+./PDN_analyze.c:  double gnd = model->config.gnd;
+./PDN_analyze.c:  double pkg_vdd = model->last_steady[2*nl*nr*nc+PKG_VDD];
+./PDN_analyze.c:  double pkg_gnd = model->last_steady[2*nl*nr*nc+PKG_GND];
+./PDN_analyze.c:  double pkg_r = model->config.PDN_pkg_sR;
+./PDN_analyze.c:          for(i=0; i<model->layers[l].metal_layers.n_metal; i++){
+./PDN_analyze.c:              direc = model->layers[l].metal_layers.geo[i].direc;
+./PDN_analyze.c:                rx += 1/model->layers[l].metal_layers.gridRL[i].r;
+./PDN_analyze.c:                ry += 1/model->layers[l].metal_layers.gridRL[i].r;
+./PDN_analyze.c:          rv = model->layers[l].tsv.r;
+./PDN_analyze.c:                if((VDDTSV == model->layers[l].tsv.loc[i][j])){
+./PDN_analyze.c:                else if((GNDTSV == model->layers[l].tsv.loc[i][j])){
+./PDN_analyze.c:        r_tsv_pad += model->layers[k].tsv.r;
+./PDN_analyze.c:          for(i=0; i<model->layers[l].metal_layers.n_metal; i++){
+./PDN_analyze.c:              direc = model->layers[l].metal_layers.geo[i].direc;
+./PDN_analyze.c:                rx += 1/model->layers[l].metal_layers.gridRL[i].r;
+./PDN_analyze.c:                ry += 1/model->layers[l].metal_layers.gridRL[i].r;
+./PDN_analyze.c:          rv = model->layers[l].tsv.r;
+./PDN_analyze.c:                if((GNDTSV == model->layers[l].tsv.loc[i][j])){
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nl = model->n_layers;
+./PDN_analyze.c:  int vs = model->config.v_stacking;
+./PDN_analyze.c:  double *v = model->last_steady;
+./PDN_analyze.c:  double vdd = model->config.vdd;
+./PDN_analyze.c:  double gnd = model->config.gnd;
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nvp = model->c4->vdd_num;
+./PDN_analyze.c:  int ngp = model->c4->gnd_num;
+./PDN_analyze.c:  int nml = model->layers[0].metal_layers.n_metal/2;
+./PDN_analyze.c:  double vdd = model->config.vdd;
+./PDN_analyze.c:  double gnd = model->config.gnd;
+./PDN_analyze.c:  if (strcmp(model->config.node_viotrace_file, NULLFILE)){
+./PDN_analyze.c:      fp_t = fopen (model->config.node_viotrace_file, "a");
+./PDN_analyze.c:          sprintf (str,"error: %s could not be opened for writing\n", model->config.node_viotrace_file);
+./PDN_analyze.c:        ptr = model->layers[0].b2gmap[i][j];
+./PDN_analyze.c:        core_id = get_core_id(model->layers[0].flp->units[blk_idx].name);
+./PDN_analyze.c:        if(!model->is_3D){
+./PDN_analyze.c:            if(model->config.PDN_gridL)
+./PDN_analyze.c:        if(vnoise > (model->config.PDN_noise_th)){
+./PDN_analyze.c:            if(vnoise > (model->config.PDN_noise_th)){ fprintf(fp_t, "1"); }
+./PDN_analyze.c:  abs_ivector(status->blkstats.counter_1D, model->total_n_blocks);
+./PDN_analyze.c:  if (strcmp(model->config.gridvol_file, NULLFILE)){
+./PDN_analyze.c:      fp_v = fopen (model->config.gridvol_file, "a");
+./PDN_analyze.c:          sprintf (str,"error: %s could not be opened for writing\n", model->config.gridvol_file);
+./PDN_analyze.c:  if(model->config.vgradient_analyse){
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nl = model->n_layers;
+./PDN_analyze.c:  int nvp = model->c4->vdd_num;
+./PDN_analyze.c:  int ngp = model->c4->gnd_num;
+./PDN_analyze.c:  double vdd = model->config.vdd;
+./PDN_analyze.c:  double gnd = model->config.gnd;
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nl = model->n_layers;
+./PDN_analyze.c:  int nvp = model->c4->vdd_num;
+./PDN_analyze.c:  int ngp = model->c4->gnd_num;
+./PDN_analyze.c:  double vdd = model->config.vdd;
+./PDN_analyze.c:  double gnd = model->config.gnd;
+./PDN_analyze.c:            rail_v = model->last_trans[vdd_idx] - model->last_trans[gnd_idx];
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nvp = model->c4->vdd_num;
+./PDN_analyze.c:  int ngp = model->c4->gnd_num;
+./PDN_analyze.c:  int nml = model->layers[0].metal_layers.n_metal/2;
+./PDN_analyze.c:  if(model->config.PDN_gridL)
+./PDN_analyze.c:  if(model->config.PDN_gridL)
+./PDN_analyze.c:  if(model->config.PDN_gridL)
+./PDN_analyze.c://  int nr = model->rows;
+./PDN_analyze.c://  int nc = model->cols;
+./PDN_analyze.c://  int nvp = model->c4->vdd_num;
+./PDN_analyze.c://  int ngp = model->c4->gnd_num;
+./PDN_analyze.c://  int nml = model->layers[0].metal_layers.n_metal/2;
+./PDN_analyze.c://  if(model->config.PDN_gridL)
+./PDN_analyze.c:  if (strcmp(model->config.padloc_file_out, NULLFILE)){
+./PDN_analyze.c:      dump_anypadloc(model, model->config.padloc_file_out, PGPAD);
+./PDN_analyze.c:      if (strcmp(model->config.gridvol_file, NULLFILE)){
+./PDN_analyze.c:          dump_grid_drop(model, model->config.gridvol_file);
+./PDN_analyze.c:      if (strcmp(model->config.padcur_file, NULLFILE)){
+./PDN_analyze.c:          dump_cur_with_cordt(model, status, model->config.padcur_file);
+./PDN_analyze.c:      if ((model->is_3D) && (strcmp(model->config.tsvcur_file, NULLFILE))){
+./PDN_analyze.c:          dump_tsv_cur(model, status, model->config.tsvcur_file);
+./PDN_analyze.c:      if (strcmp(model->config.vio_file, NULLFILE)){
+./PDN_analyze.c:          dump_violation(model, status, model->config.vio_file);
+./PDN_analyze.c:      if(model->config.vgradient_analyse)
+./PDN_analyze.c:        if (strcmp(model->config.trans_vgradient_file, NULLFILE)){
+./PDN_analyze.c:            dump_trans_vgradient(model, status, model->config.trans_vgradient_file);
+./PDN_analyze.c:  fprintf(fp, "PDN_grid_intv=%d\n", model->config.PDN_grid_intv);
+./PDN_analyze.c:  for(i=0; i<model->layers[0].metal_layers.n_metal; i++){
+./PDN_analyze.c:              i, model->layers[0].metal_layers.geo[i].pitch,
+./PDN_analyze.c:              model->layers[0].metal_layers.geo[i].width, 
+./PDN_analyze.c:              model->layers[0].metal_layers.geo[i].thick);
+./PDN_analyze.c:              model->layers[0].metal_layers.gridRL[i].r, 
+./PDN_analyze.c:              model->layers[0].metal_layers.gridRL[i].l);
+./PDN_analyze.c:  fprintf(fp, "PDN_padpitch=%e\n", model->config.PDN_padpitch);
+./PDN_analyze.c:  fprintf(fp, "PDN_padD=%e\n", model->config.PDN_padD);
+./PDN_analyze.c:  fprintf(fp, "PDN_padR=%e\n", model->config.PDN_padR);
+./PDN_analyze.c:  fprintf(fp, "PDN_cur_dense=%e\n", model->config.PDN_cur_dense);
+./PDN_analyze.c:  fprintf(fp, "PDN_padconfig=%d\n", model->config.PDN_padconfig);
+./PDN_analyze.c:  fprintf(fp, "padloc_format=%d\n", model->config.padloc_format);
+./PDN_analyze.c:  fprintf(fp, "PDN_decap_dense=%e\n", model->config.PDN_decap_dense);
+./PDN_analyze.c:  fprintf(fp, "PDN_decap_ratio=%e\n", model->config.PDN_decap_ratio);
+./PDN_analyze.c:  fprintf(fp, "PDN_decap_unifm=%d\n", model->config.PDN_decap_unifm);
+./PDN_analyze.c:  fprintf(fp, "PDN_padL=%e\n", model->config.PDN_padL);
+./PDN_analyze.c:  fprintf(fp, "PDN_pkg_sL=%e\n", model->config.PDN_pkg_sL);
+./PDN_analyze.c:  fprintf(fp, "PDN_pkg_sR=%e\n", model->config.PDN_pkg_sR);
+./PDN_analyze.c:  fprintf(fp, "PDN_pkg_C=%e\n", model->config.PDN_pkg_C);
+./PDN_analyze.c:  fprintf(fp, "PDN_pkg_pR=%e\n", model->config.PDN_pkg_pR);
+./PDN_analyze.c:  fprintf(fp, "PDN_pkg_pL=%e\n", model->config.PDN_pkg_pL);
+./PDN_analyze.c:  fprintf(fp, "PDN_pkg_scale=%e\n", model->config.PDN_pkg_scale);
+./PDN_analyze.c:  fprintf(fp, "vdd=%e\n", model->config.vdd);
+./PDN_analyze.c:  fprintf(fp, "gnd=%e\n", model->config.gnd);
+./PDN_analyze.c:  fprintf(fp, "proc_clock_freq=%e\n", model->config.proc_clock_freq);
+./PDN_analyze.c:  fprintf(fp, "PDN_step_percycle=%d\n", model->config.PDN_step_percycle);
+./PDN_analyze.c:  fprintf(fp, "ptrace_sampling_intvl=%d\n", model->config.ptrace_sampling_intvl);
+./PDN_analyze.c:  fprintf(fp, "PDN_ptrace_warmup=%d\n", model->config.PDN_ptrace_warmup);
+./PDN_analyze.c:  fprintf(fp, "PDN_multi_dom=%d\n", model->config.PDN_multi_dom);
+./PDN_analyze.c:  //fprintf(fp, "animation=%d\n", model->config.animation);
+./PDN_analyze.c:  //fprintf(fp, "frame_intv=%d\n", model->config.frame_intv);
+./PDN_analyze.c:  //fprintf(fp, "legend_lwr=%lf\n", model->config.legend_lwr);
+./PDN_analyze.c:  //fprintf(fp, "legend_upr=%lf\n", model->config.legend_upr);
+./PDN_analyze.c:  //fprintf(fp, "legend_curupr=%lf\n", model->config.legend_curupr);
+./PDN_analyze.c:  //fprintf(fp, "reserve_io=%d\n", model->config.reserve_io);
+./PDN_analyze.c:  //fprintf(fp, "MC_pads=%d\n", model->config.MC_pads);
+./PDN_analyze.c:  //fprintf(fp, "IO_dense=%lf\n", model->config.IO_dense);
+./PDN_analyze.c:  fprintf(fp, "v_stacking=%d\n", model->config.v_stacking);
+./PDN_analyze.c:  fprintf(fp, "TSV_config=%d\n", model->config.TSV_config);
+./PDN_analyze.c:  fprintf(fp, "TSV_R=%lf\n", model->config.TSV_R);
+./PDN_analyze.c:  fprintf(fp, "TSV_L=%lf\n", model->config.TSV_L);
+./PDN_analyze.c:  fprintf(fp, "SC_freq=%lf\n", model->config.SC_freq);
+./PDN_analyze.c:  fprintf(fp, "SC_totcap=%lf\n", model->config.SC_totcap);
+./PDN_analyze.c:  fprintf(fp, "SC_Rontop=%lf\n", model->config.SC_Rontop);
+./PDN_analyze.c:  fprintf(fp, "SC_Ronbtm=%lf\n", model->config.SC_Ronbtm);
+./PDN_analyze.c:  fprintf(fp, "run_PDN=%d\n", model->config.run_PDN);
+./PDN_analyze.c:  fprintf(fp, "PDN_pkgLC=%d\n", model->config.PDN_pkgLC);
+./PDN_analyze.c:  fprintf(fp, "PDN_gridL=%d\n", model->config.PDN_gridL);
+./PDN_analyze.c:  fprintf(fp, "PDN_sin_pattern=%d\n", model->config.PDN_sin_pattern);
+./PDN_analyze.c:  fprintf(fp, "PDN_sin_totstep=%d\n", model->config.PDN_sin_totstep);
+./PDN_analyze.c:  fprintf(fp, "PDN_sin_freq=%e\n", model->config.PDN_sin_freq);
+./PDN_analyze.c:  //fprintf(fp, "vgradient_analyse=%d\n", model->config.vgradient_analyse);
+./PDN_analyze.c:  fprintf(fp, "mlayer_spec_file=%s\n", model->config.mlayer_spec_file);
+./PDN_analyze.c:  fprintf(fp, "layer_file_3D=%s\n", model->config.layer_file_3D);
+./PDN_analyze.c:  if(0 == model->config.PDN_padconfig)
+./PDN_analyze.c:    fprintf(fp, "padloc_file_in=%s\n", model->config.padloc_file_in);
+./PDN_analyze.c:  fprintf(fp, "padloc_file_out=%s\n", model->config.padloc_file_out);
+./PDN_analyze.c:  fprintf(fp, "vio_file=%s\n", model->config.vio_file);
+./PDN_analyze.c:  fprintf(fp, "node_viotrace_file=%s\n", model->config.node_viotrace_file);
+./PDN_analyze.c:  fprintf(fp, "trans_vgradient_file=%s\n", model->config.trans_vgradient_file);
+./PDN_analyze.c:  fprintf(fp, "senloc_file=%s\n", model->config.senloc_file);
+./PDN_analyze.c:  fprintf(fp, "padcur_file=%s\n", model->config.padcur_file);
+./PDN_analyze.c:  fprintf(fp, "tsvcur_file=%s\n", model->config.tsvcur_file);
+./PDN_analyze.c:  fprintf(fp, "gridvol_file=%s\n", model->config.gridvol_file);
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nl = model->n_layers;
+./PDN_analyze.c:  int vs = model->config.v_stacking;
+./PDN_analyze.c:  double *v = model->last_steady;
+./PDN_analyze.c:  double vdd = model->config.vdd;
+./PDN_analyze.c:  double gnd = model->config.gnd;
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nb = model->layers[0].flp->n_units;
+./PDN_analyze.c:      name = model->layers[0].flp->units[i].name;
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  fprintf(fp_info, "GRID_INTV %d\n", model->config.PDN_grid_intv);
+./PDN_analyze.c://  int nr = model->rows;
+./PDN_analyze.c://  int nc = model->cols;
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int nvp = model->c4->vdd_num;
+./PDN_analyze.c:  double vdd = model->config.vdd;
+./PDN_analyze.c:  double upr_ratio = model->config.legend_upr;
+./PDN_analyze.c:  double lwr_ratio = model->config.legend_lwr;
+./PDN_analyze.c:  double upr_cur   = model->config.legend_curupr;
+./PDN_analyze.c:  if(3 == model->config.animation){
+./PDN_analyze.c:      if(3 == model->config.animation){
+./PDN_analyze.c:      if(!model->config.PDN_pkgLC)
+./PDN_analyze.c:                    model->last_trans[nvp+i*nc+j]);
+./PDN_analyze.c:      if(3 == model->config.animation){
+./PDN_analyze.c:                fprintf(fp1, "%d\t%d\t%lf\n",j, nr-i-1, model->last_steady[cur_idx]);
+./PDN_analyze.c:  if(3 == model->config.animation)
+./PDN_analyze.c:  if(3 == model->config.animation){
+./PDN_analyze.c:  if(1 == model->config.animation){
+./PDN_analyze.c:  else if(2 == model->config.animation){
+./PDN_analyze.c:  else if(3 == model->config.animation){
+./PDN_analyze.c:  if(3 == model->config.animation)
+./PDN_analyze.c:  if(3 == model->config.animation){
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:      for(i=0; i<model->rows; i++)
+./PDN_analyze.c:        for(j=0; j<model->cols; j++) {
+./PDN_analyze.c:  int nl = model->n_layers;
+./PDN_analyze.c:  int nr = model->rows;
+./PDN_analyze.c:  int nc = model->cols;
+./PDN_analyze.c:  int vs = model->config.v_stacking;
+./PDN_analyze.c:  int **vloc = model->c4->vdd_loc;
+./PDN_analyze.c:      ntsv += model->layers[l].tsv.num_gnd;
+./PDN_analyze.c:      ntsv += model->layers[l].tsv.num_vdd;
+./PDN_sim.c:  model->config = *config;
+./PDN_sim.c:  model->width = PDN_get_total_width(flp_default);
+./PDN_sim.c:  model->height = PDN_get_total_height(flp_default);
+./PDN_sim.c:  pad_grid_col = floor(model->width / (model->config.PDN_padpitch));
+./PDN_sim.c:  pad_grid_row = floor(model->height / (model->config.PDN_padpitch));
+./PDN_sim.c:  model->rows = model->config.PDN_grid_intv * (pad_grid_row - 1) + 1;
+./PDN_sim.c:  model->cols = model->config.PDN_grid_intv * (pad_grid_col - 1) + 1;
+./PDN_sim.c:  if((model->rows < 0) || (model->cols < 0))
+./PDN_sim.c:  if((model->rows > MAX_DIM) || (model->cols > MAX_DIM))
+./PDN_sim.c:  model->c4 = alloc_C4_PDN(model, pad_grid_col, pad_grid_row);
+./PDN_sim.c:  if(strcmp(model->config.layer_file_3D, NULLFILE))
+./PDN_sim.c:    model->is_3D = TRUE;
+./PDN_sim.c:    model->is_3D = FALSE;
+./PDN_sim.c:  if(model->config.v_stacking)
+./PDN_sim.c:    model->sc_converter = alloc_IVR(model);
+./PDN_sim.c:  model->total_n_blocks = 0;
+./PDN_sim.c:  for(i=0; i<model->n_layers; i++){
+./PDN_sim.c:      model->total_n_blocks += model->layers[i].flp->n_units;
+./PDN_sim.c:  model->last_steady = dvector(2*model->rows*model->cols*model->n_layers + PDN_STEADY_EXTRA);
+./PDN_sim.c:  model->last_power = dvector(model->rows*model->cols*model->n_layers);
+./PDN_sim.c:  padD = model->config.PDN_padD;
+./PDN_sim.c:  dense= model->config.PDN_cur_dense;
+./PDN_sim.c:  model->c4->Ith = dense * PI * padR * padR;
+./PDN_sim.c:  int nr = model->rows;
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  if (model->is_3D){
+./PDN_sim.c:		if (!strcasecmp(model->config.layer_file_3D, "stdin"))
+./PDN_sim.c:			fp = fopen (model->config.layer_file_3D, "r");
+./PDN_sim.c:			sprintf(str, "error opening lcf file %s\n", model->config.layer_file_3D);
+./PDN_sim.c:  if (model->is_3D){
+./PDN_sim.c:      model->n_layers = count_significant_lines(fp);
+./PDN_sim.c:      if (model->n_layers % LCF_3D_NPARAMS)
+./PDN_sim.c:      model->n_layers /= LCF_3D_NPARAMS;
+./PDN_sim.c:    model->n_layers = 1;
+./PDN_sim.c:  model->layers = (PDN_layer_t *) calloc (model->n_layers, sizeof(PDN_layer_t));
+./PDN_sim.c:  if (!model->layers)
+./PDN_sim.c:  if (model->is_3D){
+./PDN_sim.c:  for(i=0; i<model->n_layers; i++){
+./PDN_sim.c:      model->layers[i].cap_c = dmatrix(nr, nc);
+./PDN_sim.c:      zero_dvector(model->layers[i].cap_c[0], nr*nc);
+./PDN_sim.c:      set_bgmap_PDN(model, &model->layers[i]);
+./PDN_sim.c:  if (model->is_3D && fp != stdin)
+./PDN_sim.c:  ivr->loc = imatrix(model->rows, model->cols);
+./PDN_sim.c:  zero_ivector(ivr->loc[0], model->rows*model->cols);
+./PDN_sim.c:  int nr = model->rows;
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  IVR_t *v = model->sc_converter;
+./PDN_sim.c:  if(strcmp(model->config.IVR_loc_file, NULLFILE))
+./PDN_sim.c:    parse_IVR_loc(model, model->config.IVR_loc_file);
+./PDN_sim.c:  v->freq = 2*2*model->config.SC_freq;
+./PDN_sim.c:  if(strcmp(model->config.mlayer_spec_file, NULLFILE)){
+./PDN_sim.c:      fp = fopen(model->config.mlayer_spec_file, "r");
+./PDN_sim.c:          sprintf(str, "error opening mlayer_spec file %s\n", model->config.mlayer_spec_file);
+./PDN_sim.c:  model->layers[0].no = 0;
+./PDN_sim.c:  model->layers[0].flp = flp_default;
+./PDN_sim.c:  model->layers[0].metal_layers = alloc_metal_layers(num_layer);
+./PDN_sim.c:  model->layers[0].b2gmap = new_b2gmap_PDN(model->rows, model->cols);
+./PDN_sim.c:  if(strcmp(model->config.mlayer_spec_file, NULLFILE))
+./PDN_sim.c:    parse_metal_layer_file(model, model->config.mlayer_spec_file, 0);
+./PDN_sim.c:  model->layers[0].metal_layers.geo[0].pitch = 30e-6;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[0].width = 10e-6;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[0].thick = 3.5e-6;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[0].rho   = 1.68e-8;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[0].direc = MLCF_X;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[1].pitch = 30e-6;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[1].width = 10e-6;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[1].thick = 3.5e-6;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[1].rho   = 1.68e-8;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[1].direc = MLCF_Y;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[2].pitch = 810e-9;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[2].width = 400e-9;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[2].thick = 720e-9;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[2].rho   = 1.68e-8;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[2].direc = MLCF_X;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[3].pitch = 810e-9;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[3].width = 400e-9;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[3].thick = 720e-9;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[3].rho   = 1.68e-8;
+./PDN_sim.c:  model->layers[0].metal_layers.geo[3].direc = MLCF_Y;
+./PDN_sim.c:  int nl = model->n_layers;
+./PDN_sim.c:  double cw = model->width;
+./PDN_sim.c:  double ch = model->height;
+./PDN_sim.c:  double nr = model->rows;
+./PDN_sim.c:  double nc = model->cols;
+./PDN_sim.c:  int vs = model->config.v_stacking;
+./PDN_sim.c:    for(i=0; i<model->layers[l].metal_layers.n_metal; i++){
+./PDN_sim.c:        pitch = model->layers[l].metal_layers.geo[i].pitch;
+./PDN_sim.c:        width = model->layers[l].metal_layers.geo[i].width;
+./PDN_sim.c:        thick = model->layers[l].metal_layers.geo[i].thick;
+./PDN_sim.c:        rho   = model->layers[l].metal_layers.geo[i].rho;
+./PDN_sim.c:        direc = model->layers[l].metal_layers.geo[i].direc;
+./PDN_sim.c:            model->layers[l].metal_layers.gridRL[i].r = 
+./PDN_sim.c:            model->layers[l].metal_layers.gridRL[i].r = 
+./PDN_sim.c:  if(model->is_3D){
+./PDN_sim.c:          model->layers[l].tsv.r = model->config.TSV_R;
+./PDN_sim.c:  model->c4->pad_r = model->config.PDN_padR; 
+./PDN_sim.c:      model->sc_converter->R_drop = 0.46;
+./PDN_sim.c:      model->sc_converter->Ron_top = 2*model->config.SC_Rontop;
+./PDN_sim.c:      model->sc_converter->Ron_bottom = 2*model->config.SC_Ronbtm;
+./PDN_sim.c:  model->config.PDN_pkg_sR *= model->config.PDN_pkg_scale; 
+./PDN_sim.c:  int nr = model->rows;
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  int nl = model->n_layers;
+./PDN_sim.c:  int vs = model->config.v_stacking;
+./PDN_sim.c:  double cw = model->width;
+./PDN_sim.c:  double ch = model->height;
+./PDN_sim.c:  model->config.PDN_pkg_sL *= model->config.PDN_pkg_scale; 
+./PDN_sim.c:  model->config.PDN_pkg_C  /= model->config.PDN_pkg_scale; 
+./PDN_sim.c:  model->config.PDN_pkg_pR *= model->config.PDN_pkg_scale; 
+./PDN_sim.c:  model->config.PDN_pkg_pL *= model->config.PDN_pkg_scale; 
+./PDN_sim.c:  tot_ldcap = 16.4e-8 / model->config.PDN_pkg_scale;
+./PDN_sim.c:  //tot_ldcap = 5e-8 / model->config.PDN_pkg_scale;
+./PDN_sim.c:  tot_decap = model->config.PDN_decap_dense * \
+./PDN_sim.c:              model->config.PDN_decap_ratio * \
+./PDN_sim.c:              model->height * model->width * \
+./PDN_sim.c:  if (model->config.PDN_decap_unifm > 0){
+./PDN_sim.c:            if(0 == model->config.PDN_decap_unifm){
+./PDN_sim.c:                if(model->is_3D)
+./PDN_sim.c:                  model->layers[l].cap_c[i][j] = (tot_decap+tot_ldcap)/(nr*nc);
+./PDN_sim.c:                  model->layers[l].cap_c[i][j] = (2*(tot_decap+tot_ldcap))/(nr*nc);
+./PDN_sim.c:                    model->layers[l].cap_c[i][j] = decap_percell_hot + ldcap_percell;
+./PDN_sim.c:                    model->layers[l].cap_c[i][j] = decap_percell_cold + ldcap_percell;
+./PDN_sim.c:  if(model->is_3D){
+./PDN_sim.c:          model->layers[l].tsv.l = model->config.TSV_L;
+./PDN_sim.c:      model->sc_converter->c = model->config.SC_totcap/2;
+./PDN_sim.c:  model->c4->pad_l = model->config.PDN_padL;
+./PDN_sim.c:    for(i=0; i<model->layers[l].metal_layers.n_metal; i++) {
+./PDN_sim.c:        p  = model->layers[l].metal_layers.geo[i].pitch;
+./PDN_sim.c:        w  = model->layers[l].metal_layers.geo[i].width;
+./PDN_sim.c:        t  = model->layers[l].metal_layers.geo[i].thick;
+./PDN_sim.c:        s  = model->layers[l].metal_layers.geo[i].pitch - 
+./PDN_sim.c:          model->layers[l].metal_layers.geo[i].width;
+./PDN_sim.c:        d  = model->layers[l].metal_layers.geo[i].direc;
+./PDN_sim.c:            model->layers[l].metal_layers.gridRL[i].l = 
+./PDN_sim.c:            model->layers[l].metal_layers.gridRL[i].l = 
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  if(0 == model->config.PDN_decap_unifm)
+./PDN_sim.c:  ptr = model->layers[layer].b2gmap[i][j];
+./PDN_sim.c:  name = model->layers[layer].flp->units[ptr->idx].name;
+./PDN_sim.c:          model->config.PDN_decap_unifm > 1){
+./PDN_sim.c:          model->config.PDN_decap_unifm > 1){
+./PDN_sim.c:          model->config.PDN_decap_unifm > 2){
+./PDN_sim.c:          model->config.PDN_decap_unifm > 2){
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  return model->layers[layer].cap_c[i][j];
+./PDN_sim.c:  if(model->config.v_stacking)
+./PDN_sim.c:  int nr = model->rows;
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  int nl = model->n_layers;
+./PDN_sim.c:  set_heuristic_vol_PDN_regular(model, model->last_steady, p);
+./PDN_sim.c:      model->last_steady[i] = dp[i];
+./PDN_sim.c:  int nr = model->rows;
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  int nl = model->n_layers;
+./PDN_sim.c:  set_heuristic_vol_PDN_vs(model, model->last_steady, p);
+./PDN_sim.c:      model->last_steady[i] = dp[i];
+./PDN_sim.c:  area = (model->width * model->height) / (model->cols * model->rows);
+./PDN_sim.c:  for(l=0; l<model->n_layers; l++){
+./PDN_sim.c:      for(i=0; i<model->rows; i++)
+./PDN_sim.c:        for(j=0; j<model->cols; j++) {
+./PDN_sim.c:            g->cuboid[l][i][j] = blist_avg_PDN(model->layers[l].b2gmap[i][j], 
+./PDN_sim.c:                                               model->layers[l].flp, &b[base]) * area;
+./PDN_sim.c:      base+= model->layers[l].flp->n_units;
+./PDN_sim.c:  v->cuboid = dcuboid_PDN(model->rows, model->cols, model->n_layers);
+./PDN_sim.c:  double cw = model->width / model->cols;
+./PDN_sim.c:  double ch = model->height / model->rows;
+./PDN_sim.c:      i1 = model->rows - tolerant_ceil(tu/ch);
+./PDN_sim.c:      i2 = model->rows - tolerant_floor(bu/ch);
+./PDN_sim.c:      if((i2 > model->rows) || (j2 > model->cols))
+./PDN_sim.c:              double tc = model->height - i * ch;
+./PDN_sim.c:              double bc = model->height - (i+1) * ch;
+./PDN_sim.c:  for(i=0; i<model->rows; i++)
+./PDN_sim.c:    for(j=0; j<model->cols; j++) {
+./PDN_sim.c:  double r_pkg_s = model->config.PDN_pkg_sR;
+./PDN_sim.c:  double vdd = model->config.vdd;
+./PDN_sim.c:  double gnd = model->config.gnd;
+./PDN_sim.c:  int nr = model->rows;
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  int nl = model->n_layers;
+./PDN_sim.c:  double vdd = model->config.vdd;
+./PDN_sim.c:  double gnd = model->config.gnd;
+./PDN_sim.c:  int nr = model->rows;
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  int nl = model->n_layers;
+./PDN_sim.c:  c4->vdd_loc = imatrix(model->rows, model->cols);
+./PDN_sim.c:  c4->gnd_loc = imatrix(model->rows, model->cols);
+./PDN_sim.c:  zero_ivector(c4->vdd_loc[0], model->rows*model->cols);
+./PDN_sim.c:  zero_ivector(c4->gnd_loc[0], model->rows*model->cols);
+./PDN_sim.c:  nr = model->rows;
+./PDN_sim.c:  nc = model->cols;
+./PDN_sim.c:  pl = model->config.PDN_padconfig;
+./PDN_sim.c:  rpg = model->c4->pad_grid_row;
+./PDN_sim.c:  cpg = model->c4->pad_grid_col;
+./PDN_sim.c:          model->c4->gnd_loc[i][j] = UNDEF;
+./PDN_sim.c:          model->c4->vdd_loc[i][j] = UNDEF;
+./PDN_sim.c:      parse_pad_loc(model, model->config.padloc_file_in);
+./PDN_sim.c:                model->c4->vdd_loc[r_cordt][c_cordt] |= PGPAD;
+./PDN_sim.c:                model->c4->gnd_loc[r_cordt][c_cordt] |= PGPAD;
+./PDN_sim.c:  if(0 == model->config.reserve_io){
+./PDN_sim.c:  else if(1 == model->config.reserve_io){
+./PDN_sim.c:  else if(2 == model->config.reserve_io){
+./PDN_sim.c:  for(i=0; i<model->c4->pad_grid_row*model->c4->pad_grid_col; i++){
+./PDN_sim.c:      model->c4->vdd_padidx[i] = -1;
+./PDN_sim.c:      model->c4->gnd_padidx[i] = -1;
+./PDN_sim.c:        if (PGPAD & model->c4->vdd_loc[i][j]){
+./PDN_sim.c:            model->c4->vdd_padidx[vdd_idx] = i*nc + j;
+./PDN_sim.c:        if (PGPAD & model->c4->gnd_loc[i][j]){
+./PDN_sim.c:            model->c4->gnd_padidx[gnd_idx] = i*nc + j;
+./PDN_sim.c:  model->c4->vdd_num = vdd_idx;
+./PDN_sim.c:  model->c4->gnd_num = gnd_idx;
+./PDN_sim.c:  int nr = model->rows;
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  int nl = model->n_layers;
+./PDN_sim.c:  int tl = model->config.TSV_config;
+./PDN_sim.c:            model->layers[l].tsv.loc[i][j] = UNDEF;
+./PDN_sim.c:                  model->layers[l].tsv.loc[i][j] = VDDTSV;
+./PDN_sim.c:                  model->layers[l].tsv.loc[i][j] = GNDTSV;
+./PDN_sim.c:          if(model->layers[0].tsv.loc[i][j] !=
+./PDN_sim.c:             model->layers[l].tsv.loc[i][j])
+./PDN_sim.c:      model->layers[l].tsv.num_vdd = 0;
+./PDN_sim.c:      model->layers[l].tsv.num_gnd = 0;
+./PDN_sim.c:            if(model->layers[l].tsv.loc[i][j] == VDDTSV){
+./PDN_sim.c:                model->layers[l].tsv.num_vdd += 1;
+./PDN_sim.c:            else if(model->layers[l].tsv.loc[i][j] == GNDTSV){
+./PDN_sim.c:                model->layers[l].tsv.num_gnd += 1;
+./PDN_sim.c:  free_dvector(model->last_steady);
+./PDN_sim.c:  free_dvector(model->last_trans);
+./PDN_sim.c:  free_dvector(model->last_power);
+./PDN_sim.c:  free_PDN_C4(model->c4);
+./PDN_sim.c:  if(model->config.v_stacking)
+./PDN_sim.c:    free_IVR(model->sc_converter);
+./PDN_sim.c:  for(i=0; i<model->n_layers; i++){
+./PDN_sim.c:      free_metal_layers(model->layers[i].metal_layers);
+./PDN_sim.c:      if(model->is_3D){
+./PDN_sim.c:          free_TSV(model->layers[i].tsv);
+./PDN_sim.c:          PDN_free_flp(model->layers[i].flp);
+./PDN_sim.c:      free_dmatrix(model->layers[i].cap_c);
+./PDN_sim.c:      delete_b2gmap_PDN(model->layers[i].b2gmap, model->rows, model->cols);
+./PDN_sim.c:  free(model->layers);
+./PDN_sim.c:  int nr = model->rows;
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  int nl = model->n_layers;
+./PDN_sim.c:  int m = model->trans_matrix_dim;
+./PDN_sim.c:  SparseMatrix_mul_Vector(A, model->last_trans);
+./PDN_sim.c:  dCreate_Dense_Matrix(&B, m, 1, model->last_trans, m, SLU_DN, SLU_D, SLU_GE);
+./PDN_sim.c:  copy_dvector(model->last_power, p->cuboid[0][0], nr*nc*nl);
+./PDN_sim.c:  int nr = model->rows;
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  int nl = model->n_layers;
+./PDN_sim.c:  int np = model->c4->vdd_num + model->c4->gnd_num;
+./PDN_sim.c:  int nml = model->layers[0].metal_layers.n_metal/2;
+./PDN_sim.c:  int nvtsv = model->layers[0].tsv.num_vdd;
+./PDN_sim.c:  int ngtsv = model->layers[0].tsv.num_gnd;
+./PDN_sim.c:  if (!model->is_3D){
+./PDN_sim.c:      if(model->config.PDN_pkgLC)
+./PDN_sim.c:      if(model->config.PDN_gridL)
+./PDN_sim.c:      if(model->config.v_stacking){
+./PDN_sim.c:          nIVR = model->sc_converter->num_IVR;
+./PDN_sim.c:      if(model->config.PDN_pkgLC)
+./PDN_sim.c:    return model->c4->vdd_padidx[idx];
+./PDN_sim.c:    return model->c4->gnd_padidx[idx];
+./PDN_sim.c:  int size = model->c4->pad_grid_row*model->c4->pad_grid_col;
+./PDN_sim.c:          if(idx == model->c4->vdd_padidx[i])
+./PDN_sim.c:          if(idx == model->c4->gnd_padidx[i])
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  ptr = model->layers[layer].b2gmap[i][j];
+./PDN_sim.c:  return model->layers[layer].flp->units[ptr->idx].name;
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  int mtdmn  = model->config.PDN_multi_dom;
+./PDN_sim.c:  ptra = model->layers[0].b2gmap[ia][ja];
+./PDN_sim.c:  ptrb = model->layers[0].b2gmap[ib][jb];
+./PDN_sim.c:  if(model->layers[0].flp->units[ptra->idx].domain == 
+./PDN_sim.c:     model->layers[0].flp->units[ptrb->idx].domain)
+./PDN_sim.c:  int nr = model->rows;
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  int mtdmn  = model->config.PDN_multi_dom;
+./PDN_sim.c:  ptra = model->layers[0].b2gmap[ia][ja];
+./PDN_sim.c:  ptrb = model->layers[0].b2gmap[ib][jb];
+./PDN_sim.c:  if(model->layers[0].flp->units[ptra->idx].domain == 
+./PDN_sim.c:     model->layers[0].flp->units[ptrb->idx].domain){
+./PDN_sim.c:  while (!feof(fp) && count < (model->n_layers * LCF_3D_NPARAMS)) {
+./PDN_sim.c:          if(ival >= model->n_layers || ival < 0)
+./PDN_sim.c:          if (model->layers[ival].no != 0)
+./PDN_sim.c:          model->layers[i].no = ival;
+./PDN_sim.c:          model->layers[i].flp = PDN_read_flp(ptr);
+./PDN_sim.c:          if(!eq(model->width, PDN_get_total_width(model->layers[i].flp)) || 
+./PDN_sim.c:             !eq(model->height, PDN_get_total_height(model->layers[i].flp)))
+./PDN_sim.c:          model->layers[i].metal_layers = alloc_metal_layers(num_layer);
+./PDN_sim.c:          strcpy(model->layers[i].tsv.file, ptr);
+./PDN_sim.c:          model->layers[i].tsv.loc = imatrix(model->rows, model->cols);
+./PDN_sim.c:          zero_ivector(model->layers[i].tsv.loc[0], model->rows*model->cols);
+./PDN_sim.c:  for(i=0; i < model->n_layers; i++) {
+./PDN_sim.c:      model->layers[i].b2gmap = new_b2gmap_PDN(model->rows, model->cols);
+./PDN_sim.c:  int n = model->layers[layer].metal_layers.n_metal;
+./PDN_sim.c:          model->layers[layer].metal_layers.geo[i].pitch = dval;
+./PDN_sim.c:          model->layers[layer].metal_layers.geo[i].width = dval;
+./PDN_sim.c:          model->layers[layer].metal_layers.geo[i].thick = dval;
+./PDN_sim.c:          model->layers[layer].metal_layers.geo[i].rho = dval;
+./PDN_sim.c:          model->layers[layer].metal_layers.geo[i].direc = ival;
+./PDN_sim.c:      if(i%2 != model->layers[layer].metal_layers.geo[i].direc)
+./PDN_sim.c:  int nr = model->rows;
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  int **tloc = model->layers[layer].tsv.loc;
+./PDN_sim.c:  if (!strcasecmp(model->layers[layer].tsv.file, "stdin"))
+./PDN_sim.c:    fp = fopen (model->layers[layer].tsv.file, "r");
+./PDN_sim.c:      sprintf(s, "error opening tsvloc file %s\n", model->layers[layer].tsv.file);
+./PDN_sim.c:          if ((grid_x >= model->cols) || (grid_y >= model->rows) ||
+./PDN_sim.c:              printf("grid_size = %d*%d\n", model->cols, model->rows);
+./PDN_sim.c:  int nr = model->rows;
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:          if (IVRLOC == model->sc_converter->loc[nr - grid_y - 1][grid_x])
+./PDN_sim.c:          model->sc_converter->loc[nr - grid_y - 1][grid_x] = IVRLOC;
+./PDN_sim.c:  int nl = model->n_layers;
+./PDN_sim.c:  int nr = model->rows;
+./PDN_sim.c:  int nc = model->cols;
+./PDN_sim.c:  int nvp = model->c4->vdd_num;
+./PDN_sim.c:  int ngp = model->c4->gnd_num;
+./PDN_sim.c:  int ngtsv = model->layers[0].tsv.num_gnd;
+./PDN_sim.c:  int **ivr_loc = model->sc_converter->loc;
+./PDN_sim.c:  double *g = model->last_trans;
+./voltspot.c:      model->trans_matrix_dim = m;
+./voltspot.c:      model->last_trans = dvector(m);
+./voltspot.c:  n = model->total_n_blocks;
+./voltspot.c:          if(model->config.PDN_gridL){
+./voltspot.c:      PDN_init_trans_vector(model, model->last_trans);
+./voltspot.c:      if(model->config.PDN_sin_pattern)
+./voltspot.c:        trans_intvl = model->config.PDN_sin_totstep;
+./voltspot.c:        trans_intvl = model->config.ptrace_sampling_intvl * model->config.PDN_step_percycle;
+./voltspot.c:      warmup_steps = model->config.PDN_ptrace_warmup * trans_intvl;
+./voltspot.c:      if(model->config.v_stacking){
+./voltspot.c:          double Fsw_ratio = model->config.proc_clock_freq*model->config.PDN_step_percycle/model->sc_converter->freq;
+./voltspot.c:      for(i=0, base=0, count=0; i<model->n_layers; i++) {
+./voltspot.c:          for(j=0; j<model->layers[i].flp->n_units; j++) {
+./voltspot.c:              idx = PDN_get_blk_index(model->layers[i].flp, names[count+j]);
+./voltspot.c:          count += model->layers[i].flp->n_units;
+./voltspot.c:          base += model->layers[i].flp->n_units;	
+./voltspot.c:              if(model->config.PDN_sin_pattern){
+./voltspot.c:                                  intv/(model->config.proc_clock_freq*model->config.PDN_step_percycle), 
+./voltspot.c:                                  model->config.PDN_sin_freq, n);
+./voltspot.c:                      if(model->config.v_stacking)
+./voltspot.c:                      if(model->config.v_stacking)
+./voltspot.c:                          if(!(status->trans_counter % model->config.PDN_step_percycle))
+./voltspot.c:              if(model->config.PDN_sin_pattern){
+./voltspot.c:                                  intv/(model->config.proc_clock_freq*model->config.PDN_step_percycle), 
+./voltspot.c:                                  model->config.PDN_sin_freq, n);
+./voltspot.c:                          if(!(status->trans_counter % model->config.PDN_step_percycle))
+./voltspot.c:      if(2 == model->config.run_PDN){
+./voltspot.c:          if(model->config.animation){
+./voltspot.c:      for(i=0, base=0; i<model->n_layers; i++) {
+./voltspot.c:          for(j=0; j<model->layers[i].flp->n_units; j++)
+./voltspot.c:          base += model->layers[i].flp->n_units;	
+./voltspot.c:      tot_cycles = (lines - model->config.PDN_ptrace_warmup) * model->config.ptrace_sampling_intvl;
+./voltspot.c:      mul_val_dvector(status->gridstats.integral_2D[0], ((double)1/tot_cycles), model->rows*model->cols);
+./voltspot.c:  if(2 == model->config.run_PDN){
+./voltspot.c:  if(model->config.animation)
+./voltspot.c:    create_animation(status->draw_counter, model->config.animation);
+./voltspot.c:  for(i=0, base=0; i<model->n_layers; i++) {
+./voltspot.c:      for(j=0; j<model->layers[i].flp->n_units; j++) {
+./voltspot.c:      base += model->layers[i].flp->n_units;	
+./voltspot.c:  if(1 == model->config.run_PDN){

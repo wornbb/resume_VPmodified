@@ -1,0 +1,234 @@
+./pad.c:  double **vcur = status->vdd_cur;
+./pad.c:  double **gcur = status->gnd_cur;
+./PDN_analyze.c:  status->trans_counter = 0;
+./PDN_analyze.c:  status->draw_counter = 0;
+./PDN_analyze.c:  status->maxcur_vdd = 0;
+./PDN_analyze.c:  status->maxcur_gnd = 0;
+./PDN_analyze.c:  status->max_pad_dense = 0;
+./PDN_analyze.c:  status->curIth = 0;
+./PDN_analyze.c:  status->curIth_vdd = 0;
+./PDN_analyze.c:  status->curIth_gnd = 0;
+./PDN_analyze.c:  status->maxdroop = 0;
+./PDN_analyze.c:  status->curIc = 0;
+./PDN_analyze.c:  status->avgIc = 0;
+./PDN_analyze.c:  status->dIc = 0;
+./PDN_analyze.c:  status->curVc = 0;
+./PDN_analyze.c:  status->avgVc = 0;
+./PDN_analyze.c:  status->vio_area_ratio = 0;
+./PDN_analyze.c:  status->pkgDrop = 0;
+./PDN_analyze.c:  status->PDN_power = 0;
+./PDN_analyze.c:  status->sumcur = 0;
+./PDN_analyze.c:  status->prevIc = 0;
+./PDN_analyze.c:  status->prevVc = 1;
+./PDN_analyze.c:  status->cycle_avg  = dvector(m);
+./PDN_analyze.c:  zero_dvector(status->cycle_avg, m);
+./PDN_analyze.c:  status->maxIR = dvector(nl);
+./PDN_analyze.c:  status->layer_maxdroop = dvector(nl);
+./PDN_analyze.c:  status->TSVcur = dvector(ntsv);
+./PDN_analyze.c:  status->maxTSVcur = dvector(nl-1);
+./PDN_analyze.c:  status->sensor_loc = imatrix(nr, nc);
+./PDN_analyze.c:  zero_ivector(status->sensor_loc[0], nr*nc);
+./PDN_analyze.c:  status->sensor_noise = dmatrix(nr, nc);
+./PDN_analyze.c:  zero_dvector(status->sensor_noise[0], nr*nc);
+./PDN_analyze.c:  status->vdd_cur = dmatrix(nr, nc);
+./PDN_analyze.c:  status->gnd_cur = dmatrix(nr, nc);
+./PDN_analyze.c:  zero_dvector(status->vdd_cur[0], nr*nc);
+./PDN_analyze.c:  zero_dvector(status->gnd_cur[0], nr*nc);
+./PDN_analyze.c:  status->gridstats.counter_2D  = imatrix(nr, nc);
+./PDN_analyze.c:  status->gridstats.max_2D      = dmatrix(nr, nc);
+./PDN_analyze.c:  status->gridstats.integral_2D = dmatrix(nr, nc);
+./PDN_analyze.c:  status->blkstats.counter_1D   = ivector(model->total_n_blocks);
+./PDN_analyze.c:  status->blkstats.max_1D       = dvector(model->total_n_blocks);
+./PDN_analyze.c:  status->corestats.max_1D      = dvector(MAX_CORE_NUM);
+./PDN_analyze.c:  zero_ivector(status->gridstats.counter_2D[0], nr*nc);
+./PDN_analyze.c:  negL_dvector(status->gridstats.max_2D[0], nr*nc);
+./PDN_analyze.c:  zero_dvector(status->gridstats.integral_2D[0], nr*nc);
+./PDN_analyze.c:  zero_ivector(status->blkstats.counter_1D, model->total_n_blocks);
+./PDN_analyze.c:  negL_dvector(status->blkstats.max_1D, model->total_n_blocks);
+./PDN_analyze.c:  negL_dvector(status->corestats.max_1D, MAX_CORE_NUM);
+./PDN_analyze.c:      status->vgradient.max_1D = dvector(9*nbr);
+./PDN_analyze.c:      zero_dvector(status->vgradient.max_1D, 6*nbr);
+./PDN_analyze.c:        status->vgradient.max_1D[i] = -1000.0;
+./PDN_analyze.c:        status->vgradient.max_1D[i] = 1000.0;
+./PDN_analyze.c:  //    status->vgradient.max_1D = dvector(2*nbr);
+./PDN_analyze.c:  //    zero_dvector(status->vgradient.max_1D, 2*nbr);
+./PDN_analyze.c:  free_dvector(status->cycle_avg);
+./PDN_analyze.c:  free_imatrix(status->sensor_loc);
+./PDN_analyze.c:  free_dmatrix(status->sensor_noise);
+./PDN_analyze.c:  free_dvector(status->maxIR);
+./PDN_analyze.c:  free_dvector(status->layer_maxdroop);
+./PDN_analyze.c:  free_dvector(status->TSVcur);
+./PDN_analyze.c:  free_dvector(status->maxTSVcur);
+./PDN_analyze.c:  free_imatrix(status->gridstats.counter_2D);
+./PDN_analyze.c:  free_dmatrix(status->gridstats.max_2D);
+./PDN_analyze.c:  free_dmatrix(status->gridstats.integral_2D);
+./PDN_analyze.c:  free_ivector(status->blkstats.counter_1D);
+./PDN_analyze.c:  free_dvector(status->blkstats.max_1D);
+./PDN_analyze.c:  free_dvector(status->corestats.max_1D);
+./PDN_analyze.c:  free_dmatrix(status->vdd_cur);
+./PDN_analyze.c:  free_dmatrix(status->gnd_cur);
+./PDN_analyze.c:    free_dvector(status->vgradient.max_1D);
+./PDN_analyze.c:          if (SENSOR == status->sensor_loc[nr - grid_y - 1][grid_x])
+./PDN_analyze.c:          status->sensor_loc[nr - grid_y - 1][grid_x] = SENSOR;
+./PDN_analyze.c:  get_maxIR(model, status->maxIR);
+./PDN_analyze.c:  status->PDN_power = get_steady_PDN_power(model);
+./PDN_analyze.c:         p_count, status->sumcur);p_count++;
+./PDN_analyze.c:         p_count, status->maxcur_vdd, status->maxcur_gnd);p_count++;
+./PDN_analyze.c:    printf("%.3lf / ", status->maxIR[l]);
+./PDN_analyze.c:        printf("%.4lf/", status->maxTSVcur[l]);
+./PDN_analyze.c:         p_count, status->PDN_power);p_count++;
+./PDN_analyze.c:    status->cycle_avg[i] += model->last_trans[i];
+./PDN_analyze.c:  if(!(status->trans_counter % model->config.PDN_step_percycle)){
+./PDN_analyze.c:          status->cycle_avg[i] /= model->config.PDN_step_percycle;
+./PDN_analyze.c:          status->curIc   = status->cycle_avg[m-1];
+./PDN_analyze.c:          status->curVc   = status->cycle_avg[m-2];
+./PDN_analyze.c:          status->avgIc   = (status->curIc + status->prevIc) / 2;
+./PDN_analyze.c:          status->avgVc   = (status->curVc + status->prevVc) / 2;
+./PDN_analyze.c:          status->dIc     = status->curIc - status->prevIc;
+./PDN_analyze.c:          status->pkgDrop = status->avgIc*r_pkg_p + status->avgVc + l_pkg_p*status->dIc/delta_t;
+./PDN_analyze.c:          status->pkgDrop = 100 * ((vdd-gnd) - status->pkgDrop) / (vdd-gnd);
+./PDN_analyze.c:          status->prevIc = status->curIc;
+./PDN_analyze.c:          status->prevVc = status->curVc;
+./PDN_analyze.c:      zero_dvector(status->cycle_avg, m);
+./PDN_analyze.c:     !(status->trans_counter % model->config.frame_intv)){
+./PDN_analyze.c:      draw_single_gif(model, status, status->draw_counter, TRANSIENT);
+./PDN_analyze.c:      status->draw_counter++;
+./PDN_analyze.c:  int **sloc = status->sensor_loc;
+./PDN_analyze.c:  //  if(-LARGENUM != status->corestats.max_1D[i])
+./PDN_analyze.c:  int **sloc = status->sensor_loc;
+./PDN_analyze.c:      //fprintf(fp, "%.4lf\t", status->curIc);
+./PDN_analyze.c:      fprintf(fp, "%.4lf\t", status->pkgDrop);
+./PDN_analyze.c:  fprintf(fp, "%.4lf\t", status->maxdroop);
+./PDN_analyze.c:  //fprintf(fp, "%.4lf\t", status->vio_area_ratio);
+./PDN_analyze.c:  //    if(-LARGENUM != status->corestats.max_1D[i]){
+./PDN_analyze.c:  //        fprintf(fp, "%lf\t", status->corestats.max_1D[i]);
+./PDN_analyze.c:        fprintf(fp, "%.4lf\t", status->layer_maxdroop[l]);
+./PDN_analyze.c:                  fprintf(fp, "%.4lf\t", status->sensor_noise[i][j]);
+./PDN_analyze.c:    vdroop = status->cycle_avg[nvp+cur_idx] - status->cycle_avg[nvp+nr*nc+nbr*nml+ngp+cur_idx];
+./PDN_analyze.c:    vdroop = status->cycle_avg[nvp+cur_idx] - status->cycle_avg[nvp+nr*nc+ngp+cur_idx];
+./PDN_analyze.c:  fprintf(fp, "%lf\t%lf\n", status->cycle_avg[nvp+cur_idx], vnoise);
+./PDN_analyze.c:  double **vcur = status->vdd_cur;
+./PDN_analyze.c:  double **gcur = status->gnd_cur;
+./PDN_analyze.c:  status->sumcur = sum_dmatrix(vcur, nr, nc);
+./PDN_analyze.c:  status->maxcur_vdd = max_dmatrix_skip0(vcur, nr, nc);
+./PDN_analyze.c:  status->curIth_vdd = above_threshold_dmatrix(vcur, nr, nc, model->c4->Ith);
+./PDN_analyze.c:  status->maxcur_gnd = max_dmatrix_skip0(gcur, nr, nc);
+./PDN_analyze.c:  status->curIth_gnd = above_threshold_dmatrix(gcur, nr, nc, model->c4->Ith);
+./PDN_analyze.c:  if(status->maxcur_vdd > status->maxcur_gnd)
+./PDN_analyze.c:    status->max_pad_dense = status->maxcur_vdd;
+./PDN_analyze.c:    status->max_pad_dense = status->maxcur_gnd;
+./PDN_analyze.c:  status->max_pad_dense /= pad_area;
+./PDN_analyze.c:                    status->TSVcur[counter] = cur_val;
+./PDN_analyze.c:                    status->TSVcur[counter] = cur_val;
+./PDN_analyze.c:                    status->TSVcur[counter] = cur_val;
+./PDN_analyze.c:      status->maxTSVcur[l] = layer_max;
+./PDN_analyze.c:  int **sloc = status->sensor_loc;
+./PDN_analyze.c:  status->vio_area_ratio = 0;
+./PDN_analyze.c:  negL_dvector(status->corestats.max_1D, MAX_CORE_NUM);
+./PDN_analyze.c:              temp = status->cycle_avg[nvp+cur] - status->cycle_avg[nvp+nr*nc+nbr*nml+ngp+cur];
+./PDN_analyze.c:              temp = status->cycle_avg[nvp+cur] - status->cycle_avg[nvp+nr*nc+ngp+cur];
+./PDN_analyze.c:            temp = status->cycle_avg[nvp+ngp+cur] - status->cycle_avg[nvp+ngp+nr*nc+cur];
+./PDN_analyze.c:        status->gridstats.integral_2D[i][j] += vnoise;
+./PDN_analyze.c:        if(vnoise > status->gridstats.max_2D[i][j]){
+./PDN_analyze.c:            status->gridstats.max_2D[i][j] = vnoise;
+./PDN_analyze.c:        if(vnoise > status->blkstats.max_1D[blk_idx]){
+./PDN_analyze.c:            status->blkstats.max_1D[blk_idx] = vnoise;
+./PDN_analyze.c:        if((core_id >= 0) && (vnoise > status->corestats.max_1D[core_id]))
+./PDN_analyze.c:          status->corestats.max_1D[core_id] = vnoise;
+./PDN_analyze.c:            status->gridstats.counter_2D[i][j]++;
+./PDN_analyze.c:            if(status->blkstats.counter_1D[blk_idx] >= 0){
+./PDN_analyze.c:                status->blkstats.counter_1D[blk_idx]++;
+./PDN_analyze.c:                status->blkstats.counter_1D[blk_idx] *= -1;
+./PDN_analyze.c:            status->vio_area_ratio += 1;
+./PDN_analyze.c:            status->sensor_noise[i][j] = vnoise;
+./PDN_analyze.c:  status->vio_area_ratio /= nr*nc;
+./PDN_analyze.c:  abs_ivector(status->blkstats.counter_1D, model->total_n_blocks);
+./PDN_analyze.c:            fprintf(fp_v, "%.7f ", status->cycle_avg[nvp+cur]);
+./PDN_analyze.c:  status->maxdroop = max;
+./PDN_analyze.c:            rail_v = status->cycle_avg[vdd_idx] - status->cycle_avg[gnd_idx];
+./PDN_analyze.c:      status->layer_maxdroop[l] = l_max;
+./PDN_analyze.c:  status->maxdroop = max;
+./PDN_analyze.c:  rst_v = &status->cycle_avg[nvp];
+./PDN_analyze.c:          if(v_grad > status->vgradient.max_1D[brc_idx])
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c:          if(v_grad > status->vgradient.max_1D[brc_idx])
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c:    rst_g = &status->cycle_avg[nvp+ngp+nr*nc+nml*nbr];
+./PDN_analyze.c:    rst_g = &status->cycle_avg[nvp+ngp+nr*nc];
+./PDN_analyze.c:          if(v_grad > status->vgradient.max_1D[brc_idx])
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c:          if(v_grad > status->vgradient.max_1D[brc_idx])
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c:          if(v_grad > status->vgradient.max_1D[brc_idx])
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c:          if(v_grad > status->vgradient.max_1D[brc_idx])
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c:  rst_v = &status->cycle_avg[nvp];
+./PDN_analyze.c:          if(v_grad < status->vgradient.max_1D[brc_idx])
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c:          if(v_grad < status->vgradient.max_1D[brc_idx])
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c:    rst_g = &status->cycle_avg[nvp+ngp+nr*nc+nml*nbr];
+./PDN_analyze.c:    rst_g = &status->cycle_avg[nvp+ngp+nr*nc];
+./PDN_analyze.c:          if(v_grad < status->vgradient.max_1D[brc_idx])
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c:          if(v_grad < status->vgradient.max_1D[brc_idx])
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c:          if(v_grad < status->vgradient.max_1D[brc_idx])
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c:          if(v_grad < status->vgradient.max_1D[brc_idx])
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c:  rst_v = &status->cycle_avg[nvp];
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad*v_grad;
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] += v_grad*v_grad;
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad*v_grad;
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] += v_grad*v_grad;
+./PDN_analyze.c:    rst_g = &status->cycle_avg[nvp+ngp+nr*nc+nml*nbr];
+./PDN_analyze.c:    rst_g = &status->cycle_avg[nvp+ngp+nr*nc];
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad*v_grad;
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] += v_grad*v_grad;
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] = v_grad*v_grad;
+./PDN_analyze.c:            status->vgradient.max_1D[brc_idx] += v_grad*v_grad;
+./PDN_analyze.c://  rst = &status->cycle_avg[nvp];
+./PDN_analyze.c://          if(fabs(v_grad) > fabs(status->vgradient.max_1D[brc_idx]))
+./PDN_analyze.c://            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c://          if(fabs(v_grad) > fabs(status->vgradient.max_1D[brc_idx]))
+./PDN_analyze.c://            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c://    rst = &status->cycle_avg[nvp+ngp+nr*nc+nml*nbr];
+./PDN_analyze.c://    rst = &status->cycle_avg[nvp+ngp+nr*nc];
+./PDN_analyze.c://          if(fabs(v_grad) > fabs(status->vgradient.max_1D[brc_idx]))
+./PDN_analyze.c://            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c://          if(fabs(v_grad) > fabs(status->vgradient.max_1D[brc_idx]))
+./PDN_analyze.c://            status->vgradient.max_1D[brc_idx] = v_grad;
+./PDN_analyze.c:                status->gridstats.counter_2D[i][j], 
+./PDN_analyze.c:                status->gridstats.integral_2D[i][j],
+./PDN_analyze.c:                status->gridstats.max_2D[i][j]);
+./PDN_analyze.c:      fprintf(fp, "%s\t%d\t%lf\n", name, status->blkstats.counter_1D[i],
+./PDN_analyze.c:              status->blkstats.max_1D[i]);
+./PDN_analyze.c:          fprintf(fp, "VV\t%d_%d\t%d_%d\t%e\t%e\t%e\n", j, nr-i, j+1, nr-i, status->vgradient.max_1D[brc_idx], status->vgradient.max_1D[brc_idx+nbr*3], sqrt(status->vgradient.max_1D[brc_idx+nbr*6]/(double)(stat_counter)));
+./PDN_analyze.c:          fprintf(fp, "VV\t%d_%d\t%d_%d\t%e\t%e\t%e\n", j, nr-i, j, nr-(i+1), status->vgradient.max_1D[brc_idx], status->vgradient.max_1D[brc_idx+nbr*3], sqrt(status->vgradient.max_1D[brc_idx+nbr*6]/(double)(stat_counter)));
+./PDN_analyze.c:          fprintf(fp, "GG\t%d_%d\t%d_%d\t%e\t%e\t%e\n", j, nr-i, j+1, nr-i, status->vgradient.max_1D[brc_idx], status->vgradient.max_1D[brc_idx+nbr*3], sqrt(status->vgradient.max_1D[brc_idx+nbr*6]/(double)(stat_counter)));
+./PDN_analyze.c:          fprintf(fp, "GG\t%d_%d\t%d_%d\t%e\t%e\t%e\n", j, nr-i, j, nr-(i+1), status->vgradient.max_1D[brc_idx], status->vgradient.max_1D[brc_idx+nbr*3], sqrt(status->vgradient.max_1D[brc_idx+nbr*6]/(double)(stat_counter)));
+./PDN_analyze.c:          fprintf(fp, "VG\t%d_%d\t%d_%d\t%e\t%e\n", j, nr-i, j+1, nr-i, status->vgradient.max_1D[brc_idx], status->vgradient.max_1D[brc_idx+nbr*3]);
+./PDN_analyze.c:          fprintf(fp, "VG\t%d_%d\t%d_%d\t%e\t%e\n", j, nr-i, j, nr-(i+1), status->vgradient.max_1D[brc_idx], status->vgradient.max_1D[brc_idx+nbr*3]);
+./PDN_analyze.c://          fprintf(fp, "V\t%d_%d\t%d_%d\t%e\n", i, j, i, j+1, status->vgradient.max_1D[brc_idx]);
+./PDN_analyze.c://          fprintf(fp, "V\t%d_%d\t%d_%d\t%e\n", i, j, i+1, j, status->vgradient.max_1D[brc_idx]);
+./PDN_analyze.c://          fprintf(fp, "G\t%d_%d\t%d_%d\t%e\n", i, j, i, j+1, status->vgradient.max_1D[brc_idx]);
+./PDN_analyze.c://          fprintf(fp, "G\t%d_%d\t%d_%d\t%e\n", i, j, i+1, j, status->vgradient.max_1D[brc_idx]);
+./PDN_analyze.c:    fprintf(fp, "%e\n", status->TSVcur[i]);
+./PDN_analyze.c:                fprintf(fp, "%e\n", status->vdd_cur[i][j]);
+./voltspot.c:      status->trans_counter = 0;
+./voltspot.c:      status->draw_counter = 0;
+./voltspot.c:                      status->trans_counter++;
+./voltspot.c:                        switch_SCconverters(model, status->trans_counter, switch_intvl);
+./voltspot.c:                      status->trans_counter++;
+./voltspot.c:                        switch_SCconverters(model, status->trans_counter, switch_intvl);
+./voltspot.c:                      if(status->trans_counter > warmup_steps){ // ignore warm up
+./voltspot.c:                          if(!(status->trans_counter % model->config.PDN_step_percycle))
+./voltspot.c:                      status->trans_counter++;
+./voltspot.c:                      if(status->trans_counter > warmup_steps){ // ignore warm up
+./voltspot.c:                          if(!(status->trans_counter % model->config.PDN_step_percycle))
+./voltspot.c:              draw_single_gif(model, status, status->draw_counter, STEADY);
+./voltspot.c:              status->draw_counter++;
+./voltspot.c:      mul_val_dvector(status->gridstats.integral_2D[0], ((double)1/tot_cycles), model->rows*model->cols);
+./voltspot.c:    create_animation(status->draw_counter, model->config.animation);
